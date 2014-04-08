@@ -3,6 +3,7 @@ cobbler-csv
 
 Import cobbler server entries based on a CSV file.
 
+<pre>
 -----------------------------------------------------------
 Creating new system www1...
 
@@ -43,6 +44,7 @@ System saved!
 Syncing cobbler...
 Done.
 -----------------------------------------------------------
+</pre>
 
 Configuration
 =============
