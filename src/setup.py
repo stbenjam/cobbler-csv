@@ -3,7 +3,7 @@
 from distutils.core import setup
 
 setup(name='cobbler-csv',
-      version='1.0',
+      version='1.3',
       description='Cobbler CSV Import',
       author='Stephen Benjamin',
       author_email='stephen@bitbin.de',

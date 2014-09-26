@@ -35,6 +35,11 @@ class Config:
         self._config["delimiter"] = self._cp.get("general", "delimiter")
         self._config["dialect"] = self._cp.get("general", "dialect")
 
+        self._config["satellite_username"] = self._cp.get("satellite", "username")
+        self._config["satellite_password"] = self._cp.get("satellite", "password")
+
+        self._config['update_custom_info'] = self._cp.getboolean("satellite", "update_custom_info")
+
     def get_rhn_credentials(self):
         """
         If we're using the rhn authorization module, we get the taskomatic

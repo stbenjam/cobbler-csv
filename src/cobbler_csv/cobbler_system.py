@@ -12,14 +12,24 @@ import xmlrpclib
 
 class CobblerSystem:
 
-    def __init__(self, configFile):
+    def __init__(self, configFile, hostname=None):
         config = Config(configFile=configFile)
         self._cobbler = xmlrpclib.Server(config.api_url, allow_none=True)
         self._token = self._cobbler.login(config.username, config.password)
-        self._system = self._cobbler.new_system(self._token)
+        self._hostname = hostname
+        if hostname is None:
+            self._system = self._cobbler.new_system(self._token)
+        else:
+            try:
+                self._system = self._cobbler.get_system_handle(hostname, self._token)
+            except xmlrpclib.Fault:
+                self._system = self._cobbler.new_system(self._token)
 
     def _modify(self, key, value):
         self._cobbler.modify_system(self._system, key, value, self._token)
+
+    def show(self):
+        return self._cobbler.find_system({"name": self._hostname}, self._token)
 
     def save(self):
         self._cobbler.save_system(self._system, self._token)
