@@ -5,6 +5,8 @@ Import cobbler server entries based on a CSV file, and also includes a trigger
 to sync Spacewalk Custom Info with Cobbler after initial import.  Delete
 /var/lib/cobbler/triggers/change/post-trigger if you don't want to use it.
 
+Packages are available in the [COPR repo](https://copr.fedoraproject.org/coprs/stbenjam/cobbler-csv/).
+
 <pre>
 -----------------------------------------------------------
 Creating new system www1...
