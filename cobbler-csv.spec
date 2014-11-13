@@ -1,5 +1,5 @@
 Name:		cobbler-csv
-Version:	1.3
+Version:	1.4
 Release:    2
 Summary:	Tool for importing cobbler system profiles from an ENC
 
@@ -25,11 +25,11 @@ Tool for importing cobbler system profiles from a CSV
 test "x$RPM_BUILD_ROOT" != "x" && rm -rf $RPM_BUILD_ROOT
 %{__python} setup.py install --optimize=1 --root=$RPM_BUILD_ROOT $PREFIX
 mkdir -p ${RPM_BUILD_ROOT}/usr/bin
-mkdir -p ${RPM_BUILD_ROOT}/var/lib/cobbler/triggers/install/system/post
+mkdir -p ${RPM_BUILD_ROOT}/var/lib/cobbler/triggers/install/post
 mkdir -p ${RPM_BUILD_ROOT}/var/lib/cobbler/triggers/change
 mkdir -p ${RPM_BUILD_ROOT}/etc
 install -m 0755 cobbler-import-csv ${RPM_BUILD_ROOT}/usr/bin
-install -m 0755 post-trigger ${RPM_BUILD_ROOT}/var/lib/cobbler/triggers/install/system/post
+install -m 0755 post-trigger ${RPM_BUILD_ROOT}/var/lib/cobbler/triggers/install/post
 install -m 0755 post-trigger ${RPM_BUILD_ROOT}/var/lib/cobbler/triggers/change
 install -m 0600 etc/cobbler-csv.conf ${RPM_BUILD_ROOT}/etc
 
@@ -37,7 +37,7 @@ install -m 0600 etc/cobbler-csv.conf ${RPM_BUILD_ROOT}/etc
 %defattr(-,root,root,-)
 %{python_sitelib}/cobbler_csv
 /usr/bin/cobbler-import-csv
-/var/lib/cobbler/triggers/install/system/post/post-trigger
+/var/lib/cobbler/triggers/install/post/post-trigger
 /var/lib/cobbler/triggers/change/post-trigger
 %config(noreplace) /etc/cobbler-csv.conf
 %if 0%{?fedora} >= 9 || 0%{?rhel} > 5
